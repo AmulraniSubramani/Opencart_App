@@ -6,6 +6,8 @@ public class DemoPage {
 		// TODO Auto-generated method stub
 
 		System.out.println("This is my demo page");
+		
+		System.out.println("git reset soft --HEAD^");
 	}
 
 }
