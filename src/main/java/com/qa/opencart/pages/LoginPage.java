@@ -42,7 +42,7 @@ public class LoginPage {
 	}
 	@Step("Checking forgot password link is exist or not ")
 	public boolean forgotPwdLinkExist() {
-		System.out.println("Checking - forwardPasswirdLinkExist");
+		System.out.println("Checking - forwardPasswirdLinkExist hi ");
 		return elementUtil.doIsDiplayed(forgotPwdLink);
 	}
 	@Step("Checking forgot Register link is exist or not ")
