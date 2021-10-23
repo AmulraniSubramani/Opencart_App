@@ -103,7 +103,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 
 				try {
 					switch (env.toLowerCase()) {
-					case "qa":
+					case "qa":					
 						ip = new FileInputStream("./src/test/resources/config/qa.config.properties");
 						break;
 					case "stage":
