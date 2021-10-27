@@ -9,6 +9,7 @@ import org.testng.asserts.SoftAssert;
 
 import com.qa.opencart.Factory.DriverFactory;
 import com.qa.opencart.pages.AccountsPage;
+import com.qa.opencart.pages.AddressPage;
 import com.qa.opencart.pages.LoginPage;
 import com.qa.opencart.pages.ProductInfoPage;
 import com.qa.opencart.pages.RegistrationPage;
@@ -24,6 +25,7 @@ public class BaseTest {
 	public ResultsPage resultPage;
 	public ProductInfoPage productInfoPage;
 	public RegistrationPage registrationPage;
+	public AddressPage addressPage;
 
 	public SoftAssert softAssert;
 	
@@ -32,7 +34,7 @@ public class BaseTest {
 	public void setUp() {
 		df= new DriverFactory();
 		prop=df.initProp();
-		driver = df.initDriver(prop); // now only it gets value
+		driver = df.initDriver(prop); // now, it gets value
 		loginpg = new LoginPage(driver);
 		softAssert=new SoftAssert();
 	}

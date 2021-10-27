@@ -22,6 +22,7 @@ public class LoginPage {
 	private By loginButton=By.xpath("//input[@value='Login']");
 	private By forgotPwdLink=By.linkText("Forgotten Password");
 	private By registerLink=By.linkText("Register");
+	private By addressBook=By.linkText("Address Book");
 	
 	//2.Page constructor:
 	public LoginPage(WebDriver driver) {
@@ -63,5 +64,11 @@ public class LoginPage {
 	public RegistrationPage navigateToRegPage() {
 		elementUtil.doClick(registerLink);
 		return new RegistrationPage(driver);
+	}
+	
+	@Step("Navigating to AddressBook Page")
+	public AddressPage navigatingToAddressBook() {
+		elementUtil.doClick(addressBook);
+		return new AddressPage(driver);
 	}
 }

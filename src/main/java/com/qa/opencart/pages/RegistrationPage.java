@@ -6,6 +6,8 @@ import java.util.NoSuchElementException;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.DataProvider;
 
 import com.qa.opencart.Utilis.Constants;
@@ -83,7 +85,8 @@ public class RegistrationPage {
 		elementUtil.doSendKeys(this.telePhone, telephone);
 		elementUtil.doSendKeys(this.password, password);
 		elementUtil.doSendKeys(this.confirmPassword, password);
-		
-	}
+		}
+	
+	
 	 
 }

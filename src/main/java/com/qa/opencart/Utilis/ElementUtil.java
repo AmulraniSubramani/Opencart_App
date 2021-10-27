@@ -46,6 +46,9 @@ public class ElementUtil {
 		return driver.findElements(locator);
 	}
 
+	public String checkGetTitle() {
+		return driver.getTitle();
+	}
 	public void doSendKeys(By locator, String value) {
 		WebElement ele = getElement(locator);
 		ele.clear();
