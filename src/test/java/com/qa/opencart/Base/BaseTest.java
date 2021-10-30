@@ -5,8 +5,8 @@ import java.util.Properties;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Parameters;
 import org.testng.asserts.SoftAssert;
-
 import com.qa.opencart.Factory.DriverFactory;
 import com.qa.opencart.pages.AccountsPage;
 import com.qa.opencart.pages.AddressPage;
@@ -30,10 +30,20 @@ public class BaseTest {
 	public SoftAssert softAssert;
 	
 	
+	@Parameters({"browser","browserversion"}) // accessing this parameters from testng xml file
 	@BeforeTest
-	public void setUp() {
+	public void setUp(String browser,String browserVersion) {
 		df= new DriverFactory();
 		prop=df.initProp();
+		
+		if(browser!=null) {
+			prop.setProperty("browser",browser);
+			prop.setProperty("browserversion", browserVersion);
+		}
+		
+		
+		
+		
 		driver = df.initDriver(prop); // now, it gets value
 		loginpg = new LoginPage(driver);
 		softAssert=new SoftAssert();
