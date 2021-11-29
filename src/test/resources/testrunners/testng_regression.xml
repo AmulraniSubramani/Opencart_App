@@ -25,6 +25,30 @@
 	</test>
 
 
+ 
+ 
+ <!-- 	<test name="Components Page Test_Firefox_83">
+		<parameter name="browser" value="firefox" />
+		<parameter name="browserversion" value="83" />
+
+		<classes>
+			<class name="com.qa.opencart.Tests.ComponentsPageTest" />
+		</classes>
+	</test>
+ -->
+ 
+ 	
+ 	
+	<test name="Address Page Test_chrome_79">
+		<parameter name="browser" value="chrome" />
+		<parameter name="browserversion" value="79" />
+
+		<classes>
+			<class name="com.qa.opencart.Tests.AddressPageTest" />
+		</classes>
+	</test>
+	
+	
 	<test name="Accounts page Test_firefox_83">
 
 		<parameter name="browser" value="firefox" />

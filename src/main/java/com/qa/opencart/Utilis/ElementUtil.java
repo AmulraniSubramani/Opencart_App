@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 
+import org.apache.log4j.Logger;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoAlertPresentException;
@@ -24,6 +25,7 @@ import com.qa.opencart.Factory.DriverFactory;
 
 
 public class ElementUtil {
+	public static final Logger Log= Logger.getLogger(DriverFactory.class);
 
 	
 	private WebDriver driver;

@@ -10,6 +10,7 @@ import org.testng.asserts.SoftAssert;
 import com.qa.opencart.Factory.DriverFactory;
 import com.qa.opencart.pages.AccountsPage;
 import com.qa.opencart.pages.AddressPage;
+import com.qa.opencart.pages.ComponentsPage;
 import com.qa.opencart.pages.LoginPage;
 import com.qa.opencart.pages.ProductInfoPage;
 import com.qa.opencart.pages.RegistrationPage;
@@ -26,33 +27,33 @@ public class BaseTest {
 	public ProductInfoPage productInfoPage;
 	public RegistrationPage registrationPage;
 	public AddressPage addressPage;
+	public ComponentsPage compPage;
+	
 
 	public SoftAssert softAssert;
 	
 	
-	@Parameters({"browser","browserversion"}) // accessing this parameters from testng xml file
+	//@Parameters({"browser","browserversion"}) // accessing this parameters from testng xml file
+	@Parameters({"browser", "browserversion"})
 	@BeforeTest
-	public void setUp(String browser,String browserVersion) {
-		df= new DriverFactory();
-		prop=df.initProp();
+	public void setUp(String browser, String browserVersion) {
+		df = new DriverFactory();
+		prop = df.initProp();
 		
 		if(browser!=null) {
-			prop.setProperty("browser",browser);
+			prop.setProperty("browser", browser);
 			prop.setProperty("browserversion", browserVersion);
 		}
 		
-		
-		
-		
-		driver = df.initDriver(prop); // now, it gets value
+		driver = df.initDriver(prop); // now only it gets value
 		loginpg = new LoginPage(driver);
-		softAssert=new SoftAssert();
+		softAssert = new SoftAssert();
+		compPage= new ComponentsPage(driver);
 	}
 
- 
 	@AfterTest
 	public void tearDown() {
 		driver.quit();
 	}
-	}
-	
+
+}	
