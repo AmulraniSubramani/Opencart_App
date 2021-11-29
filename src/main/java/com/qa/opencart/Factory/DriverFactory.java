@@ -1,6 +1,7 @@
 package com.qa.opencart.Factory;
 
 import java.io.File;
+import org.apache.log4j.Logger;
 import java.net.URL;
 import java.net.MalformedURLException;
 import java.io.FileInputStream;
@@ -22,6 +23,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.safari.SafariDriver;
 
+
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 /**
@@ -39,6 +41,7 @@ public class DriverFactory {
 	public static String highlight;
 
 	public static ThreadLocal<WebDriver> tlDriver = new ThreadLocal<WebDriver>();
+	public static final Logger LOG= Logger.getLogger(DriverFactory.class);
 
 	/**
 	 * This method is used to initialize the webdriver on the basis of given browser
@@ -51,15 +54,19 @@ public class DriverFactory {
 		optionsManager = new OptionsManager(prop);
 		highlight = prop.getProperty("highlight");
 		String browser = prop.getProperty("browser").trim();
-		String browserVersion=prop.getProperty("browserversion").trim();
+		String browserVersion = prop.getProperty("browserversion").trim();
+
 		System.out.println("browser name is : " + browser);
+		LOG.info("browser name is : " + browser + browserVersion);
 
 		if (browser.equalsIgnoreCase("chrome")) {
 
 			if (Boolean.parseBoolean(prop.getProperty("remote"))) {
 				// remote
-				init_remoteDriver(browser,browserVersion);
+				init_remoteDriver(browser, browserVersion);
 			} else {// local
+				
+				LOG.info("running test cases locally" + browser);
 				WebDriverManager.chromedriver().setup();
 				tlDriver.set(new ChromeDriver(optionsManager.getChromeOptions()));
 			}
@@ -68,7 +75,7 @@ public class DriverFactory {
 		else if (browser.equalsIgnoreCase("firefox")) {
 			if (Boolean.parseBoolean(prop.getProperty("remote"))) {
 				// remote
-				init_remoteDriver(browser,browserVersion);
+				init_remoteDriver(browser, browserVersion);
 			} else {//local
 				WebDriverManager.firefoxdriver().setup();
 				tlDriver.set(new FirefoxDriver(optionsManager.getFirefoxOptions()));
@@ -79,6 +86,7 @@ public class DriverFactory {
 			tlDriver.set(new SafariDriver());
 		} else {
 			System.out.println("please pass the correct browser name..." + browser);
+			LOG.error("pleasae pass the correct browser name...." + browser);
 		}
 
 		getDriver().manage().window().maximize();
@@ -89,13 +97,13 @@ public class DriverFactory {
 
 	}
 
-	private void init_remoteDriver(String browser,String browserVersion) {
-		System.out.println("Running test on remote grid server: " + browser + ":" + browserVersion);
+	private void init_remoteDriver(String browser, String browserVersion) {
+		System.out.println("Running test on remote grid server: " + browser + " :: " + browserVersion);
 		if (browser.equals("chrome")) {
 			DesiredCapabilities cap = DesiredCapabilities.chrome();
 			cap.setCapability("browserName", "chrome");
 			cap.setCapability("browserVersion", browserVersion);
-			cap.setCapability("enableVNC",true);
+			cap.setCapability("enableVNC", true);
 			cap.setCapability(ChromeOptions.CAPABILITY, optionsManager.getChromeOptions());
 			try {
 				tlDriver.set(new RemoteWebDriver(new URL(prop.getProperty("huburl")), cap));
@@ -106,7 +114,7 @@ public class DriverFactory {
 			DesiredCapabilities cap = DesiredCapabilities.firefox();
 			cap.setCapability("browserName", "firefox");
 			cap.setCapability("browserVersion", browserVersion);
-			cap.setCapability("enableVNC",true);
+			cap.setCapability("enableVNC", true);
 			cap.setCapability(FirefoxOptions.FIREFOX_OPTIONS, optionsManager.getFirefoxOptions());
 			try {
 				tlDriver.set(new RemoteWebDriver(new URL(prop.getProperty("huburl")), cap));

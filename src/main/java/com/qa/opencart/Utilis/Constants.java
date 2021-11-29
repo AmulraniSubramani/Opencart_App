@@ -16,4 +16,6 @@ public class Constants {
 	public static final int MAC_BOOK = 4;
 	public static final String  REGISTER_SUCCESS_MESSAGE = "Your Account Has Been Created";
 	public static final String REGISTER_SHEET_NAME = "register";
+	public static final String ADDRESS_BOOK_CONFIRMATION_MESSAGE="Your address has been successfully added";
+	public static final String COMPONENTS_PAGE_TITILE="Components";
 }

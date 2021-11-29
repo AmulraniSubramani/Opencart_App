@@ -21,6 +21,7 @@ public class AccountsPage {
 	private By searchIcon=By.xpath("//span[@class='input-group-btn']/button");
 	private By logoutLink=By.linkText("Logout");
 	private By accSecHeaders=By.cssSelector("div#content h2"); // xpath=//div[@id='content']/h2
+	private By component = By.linkText("Components");
 	
 	// constructor
 	public AccountsPage(WebDriver driver) {
@@ -63,4 +64,6 @@ public class AccountsPage {
 		elementUtil.doClick(searchIcon);
 		return new ResultsPage(driver);  // test driven development
 	}
+	
+	
 }
