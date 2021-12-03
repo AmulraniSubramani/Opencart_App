@@ -2,11 +2,14 @@ package com.qa.opencart.pages;
 
 import java.util.List;
 
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import com.qa.opencart.Utilis.Constants;
 import com.qa.opencart.Utilis.ElementUtil;
+import com.qa.opencart.Utilis.JavaScriptUtil;
 
 import io.qameta.allure.Epic;
 import io.qameta.allure.Step;
@@ -18,10 +21,12 @@ public class ComponentsPage {
 
 	private WebDriver driver;
 	private ElementUtil elementUtil;
+	private JavaScriptUtil javaScript;
 
 	public ComponentsPage(WebDriver driver) {
 		this.driver=driver;
 		elementUtil= new ElementUtil(driver);
+		javaScript= new JavaScriptUtil(driver);		
 	}
 	
 	
@@ -52,17 +57,38 @@ public class ComponentsPage {
 		return elementUtil.doIsDiplayed(refineSearchSec);
 	}
 
-	public void getComponentsList(String comNam) {
+	public void getComponentsList(String componentName) {
 
+//		elementUtil.waitForElementsVisible(getAllComList, Constants.DEFAULT_TIME_OUT);
+		System.out.println("Helow------------------------------------------------------");
+		
+		
 		List<WebElement> getComList = driver.findElements(getAllComList);
-		for (int i = 0; i >= getComList.size(); i++) {
+		System.out.println("the values are" + getComList.size());
+		
+		
+		
+		for (int i = 0; i <= getComList.size(); i++) {
 			String comName = getComList.get(i).getText();
-			if (comName.equals(comNam)) {
-				getComList.get(i).click();
+			System.out.println(comName);
+			
+			if (comName.contains(componentName)) {
+						
+				String[] str=comName.split(" ");
+				String comLastValue=str[1].toString();
+				char a=comLastValue.charAt(1);
+				System.out.println("the value is :" + a);
+				if(a>0) {
+					
+					getComList.get(i).click();
+					
+				
 				break;
+			
+				}}
 			}
 		}
-	}
+	
 
 	public boolean monitorTabExist() {
 		return elementUtil.doIsDiplayed(monitorsTab);

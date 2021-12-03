@@ -15,7 +15,7 @@
 	</listeners>
 
 
-	<test name="Login page Test_chrome_90">
+	<!-- <test name="Login page Test_chrome_90">
 		<parameter name="browser" value="chrome" />
 		<parameter name="browserversion" value="90" />
 
@@ -23,23 +23,23 @@
 			<class name="com.qa.opencart.Tests.LoginPageTest" />
 		</classes>
 	</test>
-
+ -->
 
  
  
- <!-- 	<test name="Components Page Test_Firefox_83">
-		<parameter name="browser" value="firefox" />
-		<parameter name="browserversion" value="83" />
+ 	<test name="Components Page Test_Chrome_79">
+		<parameter name="browser" value="chrome" />
+		<parameter name="browserversion" value="79" />
 
 		<classes>
 			<class name="com.qa.opencart.Tests.ComponentsPageTest" />
 		</classes>
 	</test>
- -->
+
  
  	
  	
-	<test name="Address Page Test_chrome_79">
+	<!-- <test name="Address Page Test_chrome_79">
 		<parameter name="browser" value="chrome" />
 		<parameter name="browserversion" value="79" />
 
@@ -77,5 +77,5 @@
 		</classes>
 
 	</test>
-
+ -->
 </suite>
