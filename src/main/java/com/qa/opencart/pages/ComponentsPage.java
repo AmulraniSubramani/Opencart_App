@@ -81,7 +81,7 @@ public class ComponentsPage {
 				if(a>0) {
 					
 					getComList.get(i).click();
-					
+//					javaScript.clickElementByJS(getComList.get(i).click());
 				
 				break;
 			
